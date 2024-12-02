@@ -28,6 +28,8 @@ const apiTvGetIdsController = async (req: Request, res: Response) => {
 					year: tv.first_air_date,
 					id: tv.id,
 				})
+				console.log(`title: ${tv.name}`)
+				console.log(`input: ${name}\n`)
 				count++
 			} else {
 				res.status(404).send({ msg: `${name} not found!` })

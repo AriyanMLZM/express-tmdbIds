@@ -28,6 +28,8 @@ const apiMovieGetIdsController = async (req: Request, res: Response) => {
 					year: movie.release_date,
 					id: movie.id,
 				})
+				console.log(`title: ${movie.name}`)
+				console.log(`input: ${name}\n`)
 				count++
 			} else {
 				res.status(404).send({ msg: `${name} not found!` })
