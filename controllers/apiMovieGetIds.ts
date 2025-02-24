@@ -28,7 +28,7 @@ const apiMovieGetIdsController = async (req: Request, res: Response) => {
 					year: movie.release_date,
 					id: movie.id,
 				})
-				console.log(`title: ${movie.name}`)
+				console.log(`title: ${movie.title}`)
 				console.log(`input: ${name}\n`)
 				count++
 			} else {
