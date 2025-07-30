@@ -29,9 +29,11 @@ const apiTvGetIdsController = async (req: Request, res: Response) => {
 					id: tv.id,
 				})
 				console.log(`title: ${tv.name}`)
+				console.log(`year: ${year}`)
 				console.log(`input: ${name}\n`)
 				count++
 			} else {
+				console.log(`${name} not found!`)
 				res.status(404).send({ msg: `${name} not found!` })
 				return
 			}
@@ -41,6 +43,7 @@ const apiTvGetIdsController = async (req: Request, res: Response) => {
 		await Series.deleteMany({})
 		await Series.insertMany(movies)
 
+		console.log(`${count} tvs added!`)
 		res.status(200).send({ msg: `${count} tvs added!` })
 	} catch (error: any) {
 		res.status(500).send({ msg: error.message })
