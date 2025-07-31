@@ -29,9 +29,11 @@ const apiMovieGetIdsController = async (req: Request, res: Response) => {
 					id: movie.id,
 				})
 				console.log(`title: ${movie.title}`)
+				console.log(`year: ${year}`)
 				console.log(`input: ${name}\n`)
 				count++
 			} else {
+				console.log(`${name} not found!`)
 				res.status(404).send({ msg: `${name} not found!` })
 				return
 			}
@@ -41,6 +43,7 @@ const apiMovieGetIdsController = async (req: Request, res: Response) => {
 		await Movies.deleteMany({})
 		await Movies.insertMany(movies)
 
+		console.log(`${count} movies added!`)
 		res.status(200).send({ msg: `${count} movies added!` })
 	} catch (error: any) {
 		res.status(500).send({ msg: error.message })
