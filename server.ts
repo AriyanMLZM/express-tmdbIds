@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import('./configs/db')
 
-import { apiRouter } from './routes'
+import apiRouter from './routes/api'
 
 dotenv.config()
 const app = express()
