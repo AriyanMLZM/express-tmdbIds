@@ -17,7 +17,7 @@ const apiMovieGetIdsController = async (req: Request, res: Response) => {
 			const name = words.join(' ')
 
 			const resTmdb = await fetch(
-				`https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${name}&primary_release_year=${year}`
+				`${process.env.PROXY_API}https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}%26query=${name}%26primary_release_year=${year}`
 			)
 			const { results } = await resTmdb.json()
 			const movie = results[0]
