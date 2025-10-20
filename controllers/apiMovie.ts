@@ -17,6 +17,12 @@ const apiMovieController = async (req: Request, res: Response) => {
 		const { results } = await resTmdb.json()
 		const movie = results[0]
 		if (movie) {
+			const movieDoc = await MoviesData.findOne({ id: movie.id })
+			if (movieDoc) {
+				console.log(`${name} already added!`)
+				res.status(409).send({ msg: `${name} already added!` })
+				return
+			}
 			await MoviesData.create({
 				title: movie.title,
 				input_title: name,

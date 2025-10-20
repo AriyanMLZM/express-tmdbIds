@@ -17,6 +17,12 @@ const apiTvController = async (req: Request, res: Response) => {
 		const { results } = await resTmdb.json()
 		const tv = results[0]
 		if (tv) {
+			const tvDoc = await SeriesData.findOne({ id: tv.id })
+			if (tvDoc) {
+				console.log(`${name} already added!`)
+				res.status(409).send({ msg: `${name} already added!` })
+				return
+			}
 			await SeriesData.create({
 				title: tv.name,
 				input_title: name,
