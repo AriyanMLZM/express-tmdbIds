@@ -25,7 +25,7 @@ const apiTvGetIdsController = async (req: Request, res: Response) => {
 				await Series.create({
 					title: tv.name,
 					input_title: name,
-					year: tv.first_air_date,
+					year: tv.first_air_date.split('-')[0],
 					id: tv.id,
 				})
 				console.log(`title: ${tv.name}`)

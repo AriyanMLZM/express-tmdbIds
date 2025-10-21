@@ -25,7 +25,7 @@ const apiTvDataController = async (req: Request, res: Response) => {
 				await SeriesData.create({
 					title: tv.name,
 					input_title: name,
-					date: tv.first_air_date,
+					date: tv.first_air_date.split('-')[0],
 					id: tv.id,
 					poster: tv.poster_path,
 					rate: tv.vote_average.toFixed(1),

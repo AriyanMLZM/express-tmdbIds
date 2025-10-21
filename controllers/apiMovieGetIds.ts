@@ -25,7 +25,7 @@ const apiMovieGetIdsController = async (req: Request, res: Response) => {
 				await Movies.create({
 					title: movie.title,
 					input_title: name,
-					year: movie.release_date,
+					year: movie.release_date.split('-')[0],
 					id: movie.id,
 				})
 				console.log(`title: ${movie.title}`)
